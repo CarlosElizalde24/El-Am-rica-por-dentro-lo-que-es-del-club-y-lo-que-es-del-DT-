@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El América por dentro: lo que es del club y lo que es del DT (Varonil y Femenil 2021-2026)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        america: {
+                            navy: '#001E42',
+                            cream: '#FFFDD0',
+                            yellow: '#F4CA16',
+                            brightYellow: '#FFD700',
+                            red: '#C8102E',
+                            accentBlue: '#0047AB',
+                            cardBg: '#0A2540',
+                            border: '#1E3A8A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #030F26;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        section[id], div[id] { scroll-margin-top: 80px; }
+        .gradient-heading {
+            background: linear-gradient(135deg, #FFFDD0 0%, #F4CA16 50%, #C8102E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-glow {
+            background: linear-gradient(180deg, rgba(10, 37, 64, 0.8) 0%, rgba(5, 20, 38, 0.9) 100%);
+            border: 1px solid rgba(244, 202, 22, 0.15);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        .card-glow:hover { border-color: rgba(244, 202, 22, 0.4); }
+        details.mas { margin-top: 1.5rem; border: 1px solid rgba(255,255,255,0.10); border-radius: 0.75rem; background: rgba(0,30,66,0.55); }
+        details.mas > summary { cursor: pointer; list-style: none; padding: 0.85rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+        details.mas > summary::-webkit-details-marker { display: none; }
+        details.mas > summary:hover { background: rgba(244,202,22,0.06); border-radius: 0.75rem; }
+        details.mas .s-txt { font-size: 0.85rem; font-weight: 700; color: #E2E8F0; }
+        details.mas .s-sub { display: block; font-size: 0.72rem; font-weight: 400; color: #94A3B8; margin-top: 2px; }
+        details.mas .s-btn { flex-shrink: 0; font-size: 0.72rem; font-weight: 700; color: #001E42; background: #F4CA16; padding: 0.35rem 0.75rem; border-radius: 9999px; }
+        details.mas .s-btn::after { content: 'Abrir ▾'; }
+        details.mas[open] .s-btn::after { content: 'Cerrar ▴'; }
+        details.mas > .det { padding: 0 1rem 1.1rem; }
+        .det h5 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: #F4CA16; margin: 0.9rem 0 0.35rem; }
+        .tabla td, .tabla th { padding: 0.55rem 0.7rem; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #001E42; }
+        ::-webkit-scrollbar-thumb { background: #F4CA16; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-16">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-america-navy/95 backdrop-blur-md border-b border-america-yellow/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 relative flex-shrink-0 flex items-center justify-center bg-america-cream/10 rounded-full border border-america-yellow/30 p-1">
+                    <img src="logo.png" alt="Logo Club América" class="w-full h-full object-contain drop-shadow-md" onerror="this.onerror=null; this.src='america-mexico-logo-3.png';">
+                </div>
+                <div>
+                    <h1 class="font-display font-extrabold text-lg sm:text-xl text-america-cream tracking-tight leading-none">
+                        EL AMÉRICA POR DENTRO
+                    </h1>
+                    <p class="text-xs text-america-yellow/80 font-medium">Reporte Táctico (Varonil y Femenil 2021-2026)</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#tesis" class="hover:text-america-yellow transition-colors">Tesis</a>
+                <a href="#dts" class="hover:text-america-yellow transition-colors">Fichas DTs</a>
+                <a href="#hallazgos" class="hover:text-america-yellow transition-colors">Hallazgos</a>
+                <a href="#graficas" class="hover:text-america-yellow transition-colors">Compara DTs</a>
+                <a href="#recomendaciones" class="hover:text-america-yellow transition-colors">Qué haríamos</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative py-12 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-america-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/2 -left-24 w-80 h-80 bg-america-red/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="text-center max-w-4xl mx-auto relative">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase bg-america-yellow/10 text-america-yellow border border-america-yellow/30 mb-4">
+                Hackathon ISAC 2026 · Club América
+            </span>
+            <h1 class="font-display text-4xl sm:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
+                Lo que es del Club y lo que es del DT <br/>
+                <span class="gradient-heading">(Varonil y Femenil 2021 – 2026)</span>
+            </h1>
+            <div class="max-w-3xl mx-auto mb-10">
+                <p class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-3">La pregunta</p>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-america-cream leading-snug mb-5">
+                    Cuando llega un nuevo DT, <span class="text-america-yellow">¿qué cambia en el América</span> y <span class="text-america-yellow">qué se queda?</span>
+                </p>
+                <div class="w-16 h-1 bg-america-yellow/60 rounded mx-auto mb-5"></div>
+                <p class="text-slate-300 text-base sm:text-lg font-light leading-relaxed">
+                    Revisamos todos los partidos de la Liga MX desde 2021, de Solari a Almada, y sumamos a la Femenil de Villacampa.
+                </p>
+            </div>
+
+            <!-- TESIS EN 3 FRASES -->
+            <div id="tesis" class="card-glow rounded-2xl p-6 sm:p-8 text-left border-l-4 border-l-america-yellow mb-10">
+                <h3 class="font-display text-lg font-bold text-america-cream mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-america-yellow"></i> Tesis del Estudio en 3 Frases:
+                </h3>
+                <div class="space-y-4 text-sm sm:text-base text-slate-200">
+                    <p class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-america-yellow/20 text-america-yellow flex items-center justify-center font-bold text-xs mt-0.5">1</span>
+                        <span><strong>Hay cosas que son del América, no del DT:</strong> tener la pelota, jugar en campo rival y que le lleguen poco. Con Ortiz y con Jardine eso estuvo entre lo mejor de la liga.</span>
+                    </p>
+                    <p class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-america-yellow/20 text-america-yellow flex items-center justify-center font-bold text-xs mt-0.5">2</span>
+                        <span><strong>Lo que cambia con cada DT es cómo presiona.</strong> El tricampeonato de Jardine se ganó presionando menos que casi todos los equipos de la liga.</span>
+                    </p>
+                    <p class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-america-yellow/20 text-america-yellow flex items-center justify-center font-bold text-xs mt-0.5">3</span>
+                        <span><strong>Almada presiona mucho, pero deja al equipo partido.</strong> Gana más de lo que juega. La Femenil ya hace las dos cosas: presiona y casi no le llegan.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN DESTACADA CON INTEGRANTES DEL EQUIPO -->
+            <div id="autores" class="bg-america-navy/60 border border-america-yellow/20 rounded-2xl p-6 mb-12">
+                <h3 class="text-xs uppercase font-bold tracking-widest text-america-yellow mb-4">
+                    <i class="fa-solid fa-users text-america-yellow mr-2"></i> Integrantes del Equipo de Investigación & Analítica
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-america-cardBg/90 p-4 rounded-xl border border-white/5 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-america-yellow/20 flex items-center justify-center text-america-yellow font-bold text-sm">CE</div>
+                        <div class="text-left">
+                            <p class="text-sm font-bold text-white leading-tight">Carlos Emilio Elizalde Hurtado</p>
+                            <p class="text-xs text-slate-400">Tactical Data Analyst</p>
+                        </div>
+                    </div>
+                    <div class="bg-america-cardBg/90 p-4 rounded-xl border border-white/5 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-america-red/20 flex items-center justify-center text-america-red font-bold text-sm">EM</div>
+                        <div class="text-left">
+                            <p class="text-sm font-bold text-white leading-tight">Emiliano Millán Giffard</p>
+                            <p class="text-xs text-slate-400">Performance & xG Modeler</p>
+                        </div>
+                    </div>
+                    <div class="bg-america-cardBg/90 p-4 rounded-xl border border-white/5 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-america-yellow/20 flex items-center justify-center text-america-yellow font-bold text-sm">IO</div>
+                        <div class="text-left">
+                            <p class="text-sm font-bold text-white leading-tight">Iván Artemio Ortega Buenrostro</p>
+                            <p class="text-xs text-slate-400">Scouting & Opposition Analysis</p>
+                        </div>
+                    </div>
+                    <div class="bg-america-cardBg/90 p-4 rounded-xl border border-white/5 flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-america-red/20 flex items-center justify-center text-america-red font-bold text-sm">JL</div>
+                        <div class="text-left">
+                            <p class="text-sm font-bold text-white leading-tight">Jorge Daniel Lafarga Axotla</p>
+                            <p class="text-xs text-slate-400">Metrics Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍA Y FRAMEWORK -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div class="card-glow rounded-2xl p-6 sm:p-8">
+            <h2 class="font-display text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <i class="fa-solid fa-microscope text-america-yellow"></i> Framework y Metodología (20 Dimensiones)
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
+                Usamos los datos de StatsBomb: 1,811 partidos de la Liga MX (2021–2026) y 755 de la Liga MX Femenil (2024–2026). A cada DT lo calificamos en 20 rasgos de juego, siempre comparado contra todos los equipos de su liga en el mismo torneo.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 text-xs">
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">1.</span> Tener la pelota</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">2.</span> Jugar en campo rival</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">3.</span> Paciencia con el balón</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">4.</span> Pelotazo</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">5.</span> Salir jugando corto</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">6.</span> Atacar rápido</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">7.</span> Atacar por las bandas</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">8.</span> Centros</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">9.</span> Avanzar con el balón</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">10.</span> Peligro que genera</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">11.</span> Calidad de sus tiros</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">12.</span> Presionar arriba</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">13.</span> Ir por la pelota al perderla</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">14.</span> Recuperar arriba</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">15.</span> Línea defensiva adelantada</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">16.</span> Equipo junto</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">17.</span> Que le lleguen poco</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">18.</span> Contragolpe</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">19.</span> Frenar contragolpes</div>
+                <div class="bg-america-navy/80 p-3 rounded-lg border border-white/5"><span class="text-america-yellow font-bold">20.</span> Peligro a balón parado</div>
+            </div>
+            <details class="mas">
+                <summary><span class="s-txt">Metodología y definiciones<span class="s-sub">Qué métrica hay detrás de cada rasgo y de dónde salen los datos.</span></span><span class="s-btn"></span></summary>
+                <div class="det text-xs text-slate-400 leading-relaxed">
+                    <h5>Datos</h5>
+                    <p>StatsBomb, eventos y 360 (freeze frames). Varonil: 1,811 partidos de Liga MX, Apertura 2021 – Apertura 2026. Femenil: 755 partidos, Apertura 2024 – Apertura 2026, solo eventos. Una "etapa" es un DT en un club con 5 o más partidos (66 DTs, 111 etapas en el varonil). StatsBomb mide la cancha en yardas (120 × 80); aquí todo está convertido a metros.</p>
+                    <h5>Los 20 rasgos: qué métrica hay detrás</h5>
+                    <p>Cada rasgo es una métrica por partido, promediada por equipo y torneo, estandarizada (z-score) contra todos los equipos de esa liga en ese torneo y llevada a percentil. Percentil 90 = por encima del 90% de los equipos-torneo de la liga.</p>
+                    <div class="overflow-x-auto mt-2">
+                        <table class="tabla w-full text-left text-xs text-slate-300">
+                            <tbody class="divide-y divide-white/10">
+                                <tr><td class="font-bold text-white w-48">Tener la pelota</td><td>% de los pases del partido que son suyos.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Jugar en campo rival</td><td>Field tilt: de los pases en el último tercio, % que son suyos.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Paciencia</td><td>Pases por posesión.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Pelotazo</td><td>% de pases largos (32 m o más).</td></tr>
+                                <tr><td class="font-bold text-white w-48">Salir jugando corto</td><td>% de saques de meta cortos (inverso de los largos).</td></tr>
+                                <tr><td class="font-bold text-white w-48">Atacar rápido</td><td>Segundos para llegar al último tercio desde su campo (menos = más rápido).</td></tr>
+                                <tr><td class="font-bold text-white w-48">Atacar por las bandas</td><td>Inverso del % de entradas al último tercio por el centro.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Centros</td><td>Centros por partido.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Avanzar con el balón</td><td>Conducciones progresivas: avanzan 9 m o más (10 yd) y terminan en campo rival.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Peligro que genera</td><td>npxG: goles esperados sin penales, por partido.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Calidad de sus tiros</td><td>npxG por tiro.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Presionar arriba</td><td>PPDA: pases del rival en su 60% de cancha por cada acción defensiva nuestra en esa zona. Menos = presiona más (el rasgo usa el inverso).</td></tr>
+                                <tr><td class="font-bold text-white w-48">Ir por la pelota al perderla</td><td>Contrapresiones (etiqueta de StatsBomb) por cada 10 pérdidas.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Recuperar arriba</td><td>Recuperaciones en el último tercio por partido.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Línea adelantada (360)</td><td>Distancia del último defensor a su portería cuando el rival pasa en su propia mitad.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Equipo junto (360)</td><td>Largo del bloque: distancia entre el jugador de campo más adelantado y el último defensor en esas mismas jugadas (solo tomas con 6+ jugadores visibles). Menos metros = más junto.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Que le lleguen poco</td><td>npxG en contra por partido (el rasgo usa el inverso).</td></tr>
+                                <tr><td class="font-bold text-white w-48">Contragolpe</td><td>xG que genera en los 15 s después de recuperar, sin que el rival vuelva a tocarla.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Frenar contragolpes</td><td>xG que le generan en los 15 s después de que el rival recupera (inverso).</td></tr>
+                                <tr><td class="font-bold text-white w-48">Peligro a balón parado</td><td>npxG de jugadas que nacen de corner o tiro libre.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h5>Otras métricas</h5>
+                    <div class="overflow-x-auto">
+                        <table class="tabla w-full text-left text-xs text-slate-300">
+                            <tbody class="divide-y divide-white/10">
+                                <tr><td class="font-bold text-white w-48">Rival solo (360)</td><td>Recepción del rival sin ningún defensor a menos de 4.6 m (5 yd) en la toma. La referencia de la liga sale de 300 partidos.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Puntos merecidos (xPts)</td><td>Cada partido se simula 10,000 veces: cada tiro es gol con probabilidad igual a su xG. Se promedian los puntos.</td></tr>
+                                <tr><td class="font-bold text-white w-48">Tipo de rival</td><td>K-means (k = 5) sobre los 20 rasgos estandarizados de todos los equipos-torneo.</td></tr>
+                                <tr><td class="font-bold text-white w-48">En la misma situación</td><td>Cada estado (ganando, perdiendo, 10 minutos después de un gol) se compara contra el promedio de la liga en ese mismo estado.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- FICHAS TÁCTICAS COMPLETAS (VARONIL Y FEMENIL) + TABLA GENERAL -->
+    <section id="dts" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <h2 class="font-display text-3xl font-black text-white mb-8 border-l-4 border-america-yellow pl-4">
+            Comparativa General y Fichas Tácticas (Varonil y Femenil)
+        </h2>
+
+        <!-- TABLA COMPLETA DE REGISTROS -->
+        <div class="overflow-x-auto mb-12 card-glow rounded-2xl p-4">
+            <table class="w-full text-left text-sm text-slate-200">
+                <thead class="bg-america-navy text-america-cream font-display text-xs uppercase tracking-wider">
+                    <tr>
+                        <th class="p-3">Entrenador / Cuerpo Técnico</th>
+                        <th class="p-3">Rama / Período</th>
+                        <th class="p-3 text-center">Partidos</th>
+                        <th class="p-3 text-center">Pts / Part.</th>
+                        <th class="p-3 text-center">Goles Favor (GF)</th>
+                        <th class="p-3 text-center">Goles Contra (GC)</th>
+                        <th class="p-3 text-center">Diferencia</th>
+                        <th class="p-3 text-center">Qué tanto presiona*</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/10 font-medium">
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-slate-100 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-blue-500"></span> Santiago Solari
+                        </td>
+                        <td class="p-3 text-slate-400">Varonil (2021-2022)</td>
+                        <td class="p-3 text-center">27</td>
+                        <td class="p-3 text-center font-bold text-america-yellow">1.56</td>
+                        <td class="p-3 text-center">1.15</td>
+                        <td class="p-3 text-center">1.00</td>
+                        <td class="p-3 text-center text-emerald-400">+0.15</td>
+                        <td class="p-3 text-center">81</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-slate-100 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Fernando Ortiz
+                        </td>
+                        <td class="p-3 text-slate-400">Varonil (2022-2023)</td>
+                        <td class="p-3 text-center">55</td>
+                        <td class="p-3 text-center font-bold text-america-yellow">2.00</td>
+                        <td class="p-3 text-center">2.05</td>
+                        <td class="p-3 text-center">1.07</td>
+                        <td class="p-3 text-center text-emerald-400">+0.98</td>
+                        <td class="p-3 text-center">75</td>
+                    </tr>
+                    <tr class="hover:bg-white/5">
+                        <td class="p-3 font-bold text-slate-100 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-america-yellow"></span> André Jardine
+                        </td>
+                        <td class="p-3 text-slate-400">Varonil (2023-2026)</td>
+                        <td class="p-3 text-center">129</td>
+                        <td class="p-3 text-center font-bold text-america-yellow">1.86</td>
+                        <td class="p-3 text-center">1.72</td>
+                        <td class="p-3 text-center">0.92</td>
+                        <td class="p-3 text-center text-emerald-400">+0.80</td>
+                        <td class="p-3 text-center font-bold text-rose-400">19</td>
+                    </tr>
+                    <tr class="bg-america-yellow/10 font-bold border-l-4 border-america-red">
+                        <td class="p-3 text-white flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500"></span> Jorge Almada
+                        </td>
+                        <td class="p-3 text-america-yellow">Varonil (2026)</td>
+                        <td class="p-3 text-center">11</td>
+                        <td class="p-3 text-center font-extrabold text-america-brightYellow">2.18</td>
+                        <td class="p-3 text-center text-emerald-400">2.45</td>
+                        <td class="p-3 text-center text-rose-400">1.27</td>
+                        <td class="p-3 text-center text-emerald-400">+1.18</td>
+                        <td class="p-3 text-center text-america-yellow">82</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 bg-pink-950/20">
+                        <td class="p-3 font-bold text-pink-300 flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-pink-500"></span> Ángel Villacampa
+                        </td>
+                        <td class="p-3 text-pink-400">Femenil (2024-2026)</td>
+                        <td class="p-3 text-center">100</td>
+                        <td class="p-3 text-center font-bold text-pink-300">2.27</td>
+                        <td class="p-3 text-center">3.14</td>
+                        <td class="p-3 text-center">0.98</td>
+                        <td class="p-3 text-center text-emerald-400">+2.16</td>
+                        <td class="p-3 text-center">96</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-[11px] text-slate-500 mt-3">*De 0 a 100 contra su liga: 90 = presiona más que 9 de cada 10 equipos. La Femenil se compara contra la Liga MX Femenil.</p>
+        </div>
+
+        <!-- CARDS INDIVIDUALES DTs (INCLUYENDO FEMENIL) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <!-- Solari -->
+            <div class="card-glow rounded-xl p-5 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-display font-bold text-base text-white">Santiago Solari</h3>
+                            <p class="text-xs text-slate-400">Varonil • Orden y pelotazo</p>
+                        </div>
+                        <span class="bg-blue-500/20 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded">27 PJ</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-slate-300 mb-4">
+                        <div class="flex justify-between"><span>Victorias:</span> <strong class="text-white">41%</strong></div>
+                        <div class="flex justify-between"><span>GF / GC:</span> <strong class="text-white">1.15 / 1.00</strong></div>
+                        <div class="flex justify-between"><span>Estilo:</span> <strong class="text-white">Defender y mandarla larga</strong></div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Defendía muy bien y, cuando recuperaba, la mandaba larga. Le costaba generar peligro.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-blue-400 font-semibold">
+                    Sello: Primero no recibir
+                </div>
+            </div>
+
+            <!-- Ortiz -->
+            <div class="card-glow rounded-xl p-5 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-display font-bold text-base text-white">Fernando Ortiz</h3>
+                            <p class="text-xs text-slate-400">Varonil • Dominio total</p>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded">55 PJ</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-slate-300 mb-4">
+                        <div class="flex justify-between"><span>Victorias:</span> <strong class="text-white">58%</strong></div>
+                        <div class="flex justify-between"><span>GF / GC:</span> <strong class="text-white">2.05 / 1.07</strong></div>
+                        <div class="flex justify-between"><span>Estilo:</span> <strong class="text-white">Presión y ataque</strong></div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        El América que más vivió en campo rival y más peligro generó. Presionaba arriba con la línea adelantada.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-emerald-400 font-semibold">
+                    Sello: Ir por todo
+                </div>
+            </div>
+
+            <!-- Jardine -->
+            <div class="card-glow rounded-xl p-5 flex flex-col justify-between border-america-yellow/40">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-display font-bold text-base text-america-cream">André Jardine</h3>
+                            <p class="text-xs text-america-yellow">Varonil • Tricampeón</p>
+                        </div>
+                        <span class="bg-america-yellow/20 text-america-yellow text-[10px] font-bold px-2 py-0.5 rounded">129 PJ</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-slate-300 mb-4">
+                        <div class="flex justify-between"><span>Victorias:</span> <strong class="text-white">53%</strong></div>
+                        <div class="flex justify-between"><span>GF / GC:</span> <strong class="text-white">1.72 / 0.92</strong></div>
+                        <div class="flex justify-between"><span>Estilo:</span> <strong class="text-white">Pelota y paciencia</strong></div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Tenía la pelota y salía jugando desde el portero. Sin ella no presionaba: esperaba con el equipo muy junto.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-america-yellow font-semibold">
+                    Sello: Control sin prisa
+                </div>
+            </div>
+
+            <!-- Almada -->
+            <div class="card-glow rounded-xl p-5 flex flex-col justify-between border-america-red/50 bg-america-red/5">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-display font-bold text-base text-white">Jorge Almada</h3>
+                            <p class="text-xs text-rose-400">Varonil • Vertical</p>
+                        </div>
+                        <span class="bg-rose-500/20 text-rose-300 text-[10px] font-bold px-2 py-0.5 rounded">11 PJ (A26)</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-slate-300 mb-4">
+                        <div class="flex justify-between"><span>Victorias:</span> <strong class="text-america-yellow">64%</strong></div>
+                        <div class="flex justify-between"><span>GF / GC:</span> <strong class="text-white">2.45 / 1.27</strong></div>
+                        <div class="flex justify-between"><span>Estilo:</span> <strong class="text-white">Presión y velocidad</strong></div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Presiona arriba y ataca rápido. El costo: el equipo queda partido y le llegan más.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-rose-400 font-semibold">
+                    Sello: Vértigo con riesgo
+                </div>
+            </div>
+
+            <!-- Villacampa (Femenil) -->
+            <div class="card-glow rounded-xl p-5 flex flex-col justify-between border-pink-500/50 bg-pink-950/10">
+                <div>
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-display font-bold text-base text-pink-300">Ángel Villacampa</h3>
+                            <p class="text-xs text-pink-400">Femenil • Dominio</p>
+                        </div>
+                        <span class="bg-pink-500/20 text-pink-300 text-[10px] font-bold px-2 py-0.5 rounded">100 PJ</span>
+                    </div>
+                    <div class="space-y-2 text-xs text-slate-300 mb-4">
+                        <div class="flex justify-between"><span>Victorias:</span> <strong class="text-pink-300">69%</strong></div>
+                        <div class="flex justify-between"><span>GF / GC:</span> <strong class="text-white">3.14 / 0.98</strong></div>
+                        <div class="flex justify-between"><span>Estilo:</span> <strong class="text-white">Presiona y no le llegan</strong></div>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Tiene la pelota, juega en campo rival y presiona arriba sin dejar huecos atrás.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/10 text-xs text-pink-400 font-semibold">
+                    Sello: El modelo del club
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HALLAZGOS -->
+    <section id="hallazgos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 space-y-8">
+        <h2 class="font-display text-3xl font-black text-white mb-2 border-l-4 border-america-yellow pl-4">
+            Cinco Hallazgos Clave
+        </h2>
+
+        <!-- Hallazgo 1 -->
+        <div class="card-glow rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <span class="text-6xl font-black text-america-yellow/10 absolute right-6 top-2">01</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-america-cream mb-3">La presión la pone el DT. El dominio es del club.</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        Revisamos a los DTs de la Liga MX que han dirigido en más de un club. Cuando un DT se cambia de equipo, se lleva su forma de presionar. Lo demás (tener la pelota, llegar al área, defender bien) se queda en el club.
+                    </p>
+                    <div class="text-sm bg-america-navy/90 p-3 rounded border border-white/5 text-slate-300 mb-3">
+                        <strong class="text-america-yellow">Dato Clave:</strong> Jardine heredó el equipo de Ortiz y solo le cambió una cosa: dejó de presionar arriba.
+                    </div>
+                    <div class="text-sm bg-emerald-950/40 p-3 rounded border border-emerald-500/20 text-slate-300">
+                        <strong class="text-emerald-400">Qué hacer con esto:</strong> si se quiere cambiar cómo presiona el equipo, eso lo trae el DT. Si se quiere más llegadas o más dominio, eso se arma con los jugadores que llegan.
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-2 pr-16">Qué tanto se parecen dos equipos cuando tienen el mismo DT (amarillo) o el mismo club (azul). Barra más larga = se parecen más.</p>
+                    <div class="relative h-72"><canvas id="chartClubDT"></canvas></div>
+                </div>
+            </div>
+            <details class="mas">
+                <summary><span class="s-txt">Detalle técnico<span class="s-sub">Números completos, muestras y cómo se calculó.</span></span><span class="s-btn"></span></summary>
+                <div class="det text-xs text-slate-400 leading-relaxed space-y-2">
+                    <h5>Método</h5>
+                    <p>Cada etapa (un DT en un club, 5+ partidos) es el promedio de sus 20 rasgos en z-score. Para cada par de etapas medimos la diferencia absoluta en cada rasgo. "Se parecen X% más" = 1 − (diferencia media en los pares que comparten DT o club) ÷ (diferencia media en los pares que no comparten nada). Son 48 pares "mismo DT, otro club" y 301 "mismo club, otro DT", de 66 DTs y 111 etapas.</p>
+                    <h5>Resultados</h5>
+                    <p>Presión (PPDA): 32% si comparten DT contra 5% si comparten club. Pelotazo: 26% contra 11%. Al revés, field tilt: 2% contra 26%; pases por posesión: 7% contra 22%; npxG: 2% contra 20%; npxG en contra: 8% contra 19%.</p>
+                    <h5>En el América</h5>
+                    <p>Con similitud coseno entre perfiles, la etapa más parecida a Jardine · América en toda la liga es Ortiz · América (0.79). Un clasificador (regresión logística con los 20 rasgos por partido) confunde 31 de los 55 partidos de Ortiz con partidos de Jardine. Lo que cambió: presión del percentil 75 al 19 y salida corta del 16 al 78. Almada movió la presión al revés: de 19 a 82.</p>
+                    <h5>Cuidado</h5>
+                    <p>Es exploratorio: los pares del mismo club pueden estar separados por años y con otro plantel, lo que puede subestimar el peso del club.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- Hallazgo 2 -->
+        <div class="card-glow rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <span class="text-6xl font-black text-america-yellow/10 absolute right-6 top-2">02</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-america-cream mb-3">El tricampeón casi no presionaba</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        En sus tres títulos (A23, C24 y A24), el América de Jardine presionó menos que 9 de cada 10 equipos de la liga. No iba a quitarle la pelota al rival: lo esperaba con el equipo muy junto.
+                    </p>
+                    <div class="text-sm bg-america-navy/90 p-3 rounded border border-white/5 text-slate-300 mb-3">
+                        <strong class="text-america-yellow">Dato Clave:</strong> con Ortiz, el rival daba unos 14 pases antes de que el América le fuera encima. Con el Jardine campeón, unos 22.
+                    </div>
+                    <div class="text-sm bg-emerald-950/40 p-3 rounded border border-emerald-500/20 text-slate-300">
+                        <strong class="text-emerald-400">Qué nos dice:</strong> para ganar, el América no necesitó presionar arriba. Lo que nunca soltó fue estar junto.
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-2">Torneo a torneo, comparado con la liga (★ = campeón)</p>
+                    <div class="relative h-72"><canvas id="chartTorneos"></canvas></div>
+                    <p class="text-[10px] text-slate-500 mt-1">0 a 100 contra la liga: 90 = lo hace más que 9 de cada 10 equipos.</p>
+                </div>
+            </div>
+            <details class="mas">
+                <summary><span class="s-txt">Detalle técnico<span class="s-sub">Números completos, muestras y cómo se calculó.</span></span><span class="s-btn"></span></summary>
+                <div class="det text-xs text-slate-400 leading-relaxed space-y-2">
+                    <h5>Números</h5>
+                    <p>Percentiles en los tres torneos campeones (A23, C24, A24; 70 partidos): presión arriba (PPDA) 9, 5 y 9; equipo junto (largo del bloque, 360) 98, 96 y 95; pases por posesión 99, 92 y 80; npxG por tiro 99, 99 y 91.</p>
+                    <p>PPDA: con Ortiz, ~14–15; con el Jardine campeón, 21–23 (mediana de la liga ≈ 16). El rival jugaba cerca de 50% más pases en su salida antes de una acción defensiva del América.</p>
+                    <h5>La excepción</h5>
+                    <p>Clausura 2025: el único torneo en que Jardine presionó arriba (percentil 69). Llegó a la final y la perdió con Toluca (0-0 y 0-2). No prueba que presionar lo hiciera perder; sí que el equipo campeón era otro.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- Hallazgo 3 -->
+        <div class="card-glow rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <span class="text-6xl font-black text-america-yellow/10 absolute right-6 top-2">03</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-america-cream mb-3">Jardine se fue apagando y la suerte se acabó</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        De 2023 a 2026, el América de Jardine generó cada vez menos peligro: <strong class="text-white">41% menos</strong>. La defensa aguantó; lo que se apagó fue el ataque. Y en las Liguillas del tricampeonato tuvo suerte: sacó unos 5 puntos más de los que su juego merecía. Después se le regresó.
+                    </p>
+                    <div class="text-sm bg-america-navy/90 p-3 rounded border border-white/5 text-slate-300 mb-3">
+                        <strong class="text-america-yellow">Dato Clave:</strong> contra Pumas en el C26 empató 3-3 y 3-3 generando casi 4 veces más peligro, y quedó eliminado.
+                    </div>
+                    <div class="text-sm bg-emerald-950/40 p-3 rounded border border-emerald-500/20 text-slate-300">
+                        <strong class="text-emerald-400">Qué hacer con esto:</strong> mirar el peligro que genera el equipo y no solo los resultados. Avisa antes de que los resultados se caigan.
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-2">El ataque de Jardine, comparado con la liga</p>
+                    <div class="relative h-72"><canvas id="chartDesgaste"></canvas></div>
+                </div>
+            </div>
+            <details class="mas">
+                <summary><span class="s-txt">Detalle técnico<span class="s-sub">Números completos, muestras y cómo se calculó.</span></span><span class="s-btn"></span></summary>
+                <div class="det text-xs text-slate-400 leading-relaxed space-y-2">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h5>El desgaste</h5>
+                        <p>npxG por partido: de 1.77 (A23) a 1.04 (C26), −41%. Percentil de volumen (npxG) de 99 a 32 y de npxG por tiro de 99 a 3. El npxG en contra siguió arriba todo el ciclo (percentil 83 en el C26).</p>
+                        <h5>La suerte (puntos reales contra xPts)</h5>
+                        <p>Temporada regular: 1.86 puntos por partido contra 1.79 xPts (129 partidos). Liguillas del tricampeonato: 36 puntos contra 31.2 xPts en 19 partidos; 31 goles con 25.2 de xG a favor y 15 recibidos con 18.6 en contra. Ganó partidos con poca probabilidad: final del C24 contra Cruz Azul, 1-0 (32%); A24, 2-0 a Toluca de visita (27%) y 4-3 a Cruz Azul de visita (31%).</p>
+                        <p>Después: −2.1 puntos en la Liguilla del C25 y −3.4 en la del C26. Contra Pumas (C26): 3-3 y 3-3 con 6.2 de xG contra 1.7.</p>
+                        <p>Las causas del desgaste (edad del plantel, ventas, rivales que ya le tenían la medida) no están en los datos: son hipótesis.</p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400 mt-4 mb-2">Liguilla: puntos reales − xPts</p>
+                        <div class="relative h-40"><canvas id="chartSuerte"></canvas></div>
+                    </div>
+                </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- Hallazgo 4 -->
+        <div class="card-glow rounded-2xl p-6 sm:p-8 relative overflow-hidden border-america-red/50">
+            <span class="text-6xl font-black text-rose-500/10 absolute right-6 top-2">04</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3">Almada presiona, pero deja un hueco</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        Almada cambió todo al revés que Jardine: presiona arriba y ataca rápido. Es el que más gana de los cuatro, pero el equipo queda partido: frente a su área, el rival recibe solo más seguido que contra el promedio de la liga. Ese mismo hueco lo tenía en Pachuca.
+                    </p>
+                    <div class="text-sm bg-america-navy/90 p-3 rounded border border-white/5 text-slate-300 mb-3">
+                        <strong class="text-rose-400">Dato Clave:</strong> por lo que genera y lo que le generan, merecía 1.71 puntos por partido. Lleva 2.18: unos 8 puntos de más en el torneo.
+                    </div>
+                    <div class="text-sm bg-emerald-950/40 p-3 rounded border border-emerald-500/20 text-slate-300">
+                        <strong class="text-emerald-400">Qué hacer con esto:</strong> mantener la presión, pero subir la línea defensiva para que el equipo vuelva a estar junto.
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-2">De cada 100 veces que el rival recibe frente al área, por el centro, ¿cuántas está solo?</p>
+                    <div class="relative h-56"><canvas id="chartFantasma"></canvas></div>
+                </div>
+            </div>
+            <details class="mas">
+                <summary><span class="s-txt">Detalle técnico<span class="s-sub">Números completos, muestras y cómo se calculó.</span></span><span class="s-btn"></span></summary>
+                <div class="det text-xs text-slate-400 leading-relaxed space-y-2">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="overflow-x-auto">
+                        <h5>Percentil contra la liga</h5>
+                        <table class="tabla w-full text-left text-xs text-slate-300">
+                            <thead class="bg-america-navy text-america-cream uppercase tracking-wider text-[10px]">
+                                <tr><th></th><th class="text-center">Jardine</th><th class="text-center">Almada (América)</th><th class="text-center">Almada (Pachuca)</th></tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/10">
+                                <tr><td>Presionar arriba (PPDA)</td><td class="text-center">19</td><td class="text-center text-emerald-400 font-bold">82</td><td class="text-center">79</td></tr>
+                                <tr><td>Contragolpe (xG en 15 s)</td><td class="text-center">60</td><td class="text-center text-emerald-400 font-bold">98</td><td class="text-center">74</td></tr>
+                                <tr><td>Balón parado (npxG)</td><td class="text-center">86</td><td class="text-center text-emerald-400 font-bold">99</td><td class="text-center">63</td></tr>
+                                <tr><td>Equipo junto (largo del bloque, 360)</td><td class="text-center">94</td><td class="text-center text-rose-400 font-bold">0</td><td class="text-center">76</td></tr>
+                                <tr><td>Línea adelantada (360)</td><td class="text-center">61</td><td class="text-center text-rose-400 font-bold">53</td><td class="text-center">90</td></tr>
+                                <tr><td>Contrapresión</td><td class="text-center">53</td><td class="text-center text-rose-400 font-bold">3</td><td class="text-center">58</td></tr>
+                                <tr><td>Que le lleguen poco (npxGA)</td><td class="text-center">89</td><td class="text-center text-rose-400 font-bold">26</td><td class="text-center">74</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h5>La zona fantasma (360)</h5>
+                        <p>% de recepciones del rival en el último tercio, carril central, sin ningún defensor a menos de 4.6 m: Almada · América 26.2% (145 recepciones) contra 22.6% de la liga; Almada · Pachuca 26.0% (2,194 recepciones, 138 partidos); Jardine 21.2% (1,700). En el carril interior izquierdo, Almada · América deja 41.6% contra 36.3%.</p>
+                        <h5>Lo que cuesta</h5>
+                        <p>npxG en contra: 1.32 por partido (Jardine 0.86, liga 1.16). Largo del bloque: 26.7 m (Jardine 23.0, liga 24.0). Contrapresiones por cada 10 pérdidas: 2.4 (liga 2.9).</p>
+                        <h5>Los puntos</h5>
+                        <p>xPts 1.71 por partido contra 2.18 reales: +0.47 por partido, ≈ 8 puntos en un torneo de 17 jornadas. En Pachuca su línea estaba en el percentil 90 y el bloque en 76: la presión llegó al América, la línea no.</p>
+                        <p>Muestra: 11 partidos con el América. Lo que respalda la señal es que el hueco aparece igual en 138 partidos con Pachuca.</p>
+                    </div>
+                </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- Hallazgo 5 -->
+        <div class="card-glow rounded-2xl p-6 sm:p-8 relative overflow-hidden border-pink-500/40">
+            <span class="text-6xl font-black text-pink-500/10 absolute right-6 top-2">05</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-display font-bold text-xl text-white mb-3"><span class="text-pink-400">La Femenil</span> ya juega como el varonil quiere</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                        La Femenil de Villacampa presiona arriba y casi no le llegan. Es justo la combinación que el varonil está buscando, y ya existe dentro del club.
+                    </p>
+                    <div class="text-sm bg-america-navy/90 p-3 rounded border border-white/5 text-slate-300 mb-3">
+                        <strong class="text-pink-400">Dato Clave:</strong> le generan 40% menos peligro que al promedio de su liga, y recupera la mitad de las pelotas en campo rival.
+                    </div>
+                    <div class="text-sm bg-emerald-950/40 p-3 rounded border border-emerald-500/20 text-slate-300">
+                        <strong class="text-emerald-400">Qué hacer con esto:</strong> usar a la Femenil como referencia. Mismo escudo, misma idea, ya funcionando.
+                    </div>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 mb-2">América Femenil contra el promedio de su liga</p>
+                    <div class="relative h-64"><canvas id="chartFemenil"></canvas></div>
+                </div>
+            </div>
+            <details class="mas">
+                <summary><span class="s-txt">Detalle técnico<span class="s-sub">Números completos, muestras y cómo se calculó.</span></span><span class="s-btn"></span></summary>
+                <div class="det text-xs text-slate-400 leading-relaxed space-y-2">
+                    <h5>Números (contra la Liga MX Femenil)</h5>
+                    <p>PPDA 9.6 contra 14.2 de mediana (percentil 96). npxG en contra 0.80 contra 1.37 (percentil 94). Posesión 64% contra 49%; field tilt 74% contra 52%; recuperaciones en el último tercio 22.9 contra 15.6 por partido; xG en los 15 s tras recuperar 1.30 contra 0.72. 51% de sus recuperaciones son en campo rival (liga 39%). Está en el percentil 90 o más en al menos 9 de los 18 rasgos sin 360.</p>
+                    <h5>Resultados y contexto</h5>
+                    <p>xPts 2.25 contra 2.27 reales en 100 partidos: no es suerte. 10 minutos después de recibir gol: 1.59 npxG/90 contra 0.82 de la liga (70 casos). Contra el top 6, 1.82 puntos por partido; contra el resto, 2.57. En el Apertura 2026 su npxG en contra bajó al percentil 68 (11 partidos, torneo en curso).</p>
+                    <h5>Cuidado</h5>
+                    <p>Es otra liga, con más diferencia entre equipos, y sin datos 360 (no hay línea, bloque ni zona fantasma). Se compara la idea de juego, no los valores directos.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- COMPARADOR INTERACTIVO -->
+    <section id="graficas" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div class="mb-6">
+            <h2 class="font-display text-3xl font-black text-white border-l-4 border-america-yellow pl-4">
+                Visualizaciones Interactivas de Datos
+            </h2>
+            <p class="text-slate-400 text-sm mt-1">Prende y apaga DTs, o elige dos para ver en qué se distinguen.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div class="card-glow rounded-2xl p-6 lg:col-span-3">
+                <h3 class="font-display font-bold text-lg text-white mb-3">Radar de Estilo Táctico</h3>
+                <div class="flex flex-wrap gap-2 mb-4 text-xs" id="radarChecks"></div>
+                <div class="relative h-96"><canvas id="chartRadar"></canvas></div>
+                <p class="text-[10px] text-slate-500 mt-2">0 a 100 contra su liga: 90 = lo hace más que 9 de cada 10 equipos. La Femenil no tiene datos de línea ni de equipo junto.</p>
+            </div>
+            <div class="card-glow rounded-2xl p-6 lg:col-span-2">
+                <h3 class="font-display font-bold text-lg text-white mb-1">¿Qué los separa?</h3>
+                <p class="text-xs text-slate-400 mb-4">Elige dos DTs.</p>
+                <div class="grid grid-cols-2 gap-3 mb-5">
+                    <select id="selA" class="bg-america-navy border border-america-yellow/30 rounded-lg p-2 text-sm text-white" onchange="compararDTs()"></select>
+                    <select id="selB" class="bg-america-navy border border-america-yellow/30 rounded-lg p-2 text-sm text-white" onchange="compararDTs()"></select>
+                </div>
+                <div id="comparaSalida" class="space-y-4 text-sm"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUÉ HARÍAMOS -->
+    <section id="recomendaciones" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div class="card-glow rounded-2xl p-6 sm:p-8 border-2 border-america-yellow/30">
+            <h2 class="font-display text-2xl sm:text-3xl font-black text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-sliders text-america-yellow"></i> Qué haríamos
+            </h2>
+            <p class="text-base text-slate-200 mb-6">
+                En una frase: <strong class="text-america-yellow">presionar como Almada sin perder el equipo junto de Jardine.</strong>
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-america-navy/80 p-5 rounded-xl border border-white/10">
+                    <p class="text-america-yellow font-display font-black text-2xl mb-2">1</p>
+                    <p class="text-sm font-bold text-white mb-1">Subir la línea defensiva</p>
+                    <p class="text-xs text-slate-400">Para que el equipo vuelva a estar junto mientras presiona. Así jugaba Almada en Pachuca.</p>
+                </div>
+                <div class="bg-america-navy/80 p-5 rounded-xl border border-white/10">
+                    <p class="text-america-yellow font-display font-black text-2xl mb-2">2</p>
+                    <p class="text-sm font-bold text-white mb-1">Cerrar el centro frente al área</p>
+                    <p class="text-xs text-slate-400">Un medio de contención fijo que no salga a presionar.</p>
+                </div>
+                <div class="bg-america-navy/80 p-5 rounded-xl border border-white/10">
+                    <p class="text-america-yellow font-display font-black text-2xl mb-2">3</p>
+                    <p class="text-sm font-bold text-white mb-1">No confiarse de los puntos</p>
+                    <p class="text-xs text-slate-400">Revisar cada jornada si el juego respalda los resultados.</p>
+                </div>
+            </div>
+
+            <h3 class="text-xs uppercase font-bold tracking-widest text-america-yellow mb-3">Tres números para revisar cada jornada</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-america-navy/90 p-5 rounded-xl border border-white/10 text-center">
+                    <p class="text-xs uppercase font-bold text-slate-400 mb-1">Distancia del delantero al último defensor</p>
+                    <p class="text-3xl font-black text-rose-400">27 m</p>
+                    <p class="text-[11px] text-slate-500 mt-2">Con Jardine: 23 m · Meta: 24 m o menos</p>
+                </div>
+                <div class="bg-america-navy/90 p-5 rounded-xl border border-white/10 text-center">
+                    <p class="text-xs uppercase font-bold text-slate-400 mb-1">Rival solo frente al área</p>
+                    <p class="text-3xl font-black text-rose-400">26 de 100</p>
+                    <p class="text-[11px] text-slate-500 mt-2">Liga: 23 · Meta: 23 o menos</p>
+                </div>
+                <div class="bg-america-navy/90 p-5 rounded-xl border border-america-yellow/40 text-center bg-america-yellow/5">
+                    <p class="text-xs uppercase font-bold text-america-yellow mb-1">Puntos de más por partido</p>
+                    <p class="text-4xl font-black text-america-brightYellow">+0.47</p>
+                    <p class="text-[11px] text-slate-400 mt-2">Jardine: +0.07 · Alarma si pasa de +0.3</p>
+                </div>
+            </div>
+
+            <details class="mas">
+                <summary><span class="s-txt">Más cosas que encontramos<span class="s-sub">Contra quién sufre cada DT, cómo reacciona al gol en contra y sus cambios.</span></span><span class="s-btn"></span></summary>
+                <div class="det grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-america-navy/80 p-5 rounded-xl border border-white/10">
+                        <div class="text-xs font-bold text-america-yellow uppercase mb-2">A cada DT le cuestan sus espejos</div>
+                        <p class="text-xs text-slate-300 leading-relaxed">A Jardine le costaban los equipos pacientes que salen jugando (Pumas lo eliminó en el C26). A Almada, en Pachuca, los que avanzan con el balón y adelantan la línea. Contra los pacientes, la presión de Almada es el arma; contra los otros, conviene esperar como Jardine.</p>
+                    </div>
+                    <div class="bg-america-navy/80 p-5 rounded-xl border border-white/10">
+                        <div class="text-xs font-bold text-america-yellow uppercase mb-2">El carácter, medido</div>
+                        <p class="text-xs text-slate-300 leading-relaxed">Cuando le metían gol, el América de Jardine no se caía: en los 10 minutos siguientes generaba 39% más peligro que un equipo normal y recibía otro gol la mitad de veces (5% contra 12%).</p>
+                    </div>
+                    <div class="bg-america-navy/80 p-5 rounded-xl border border-white/10">
+                        <div class="text-xs font-bold text-america-yellow uppercase mb-2">Jardine, el de los ajustes</div>
+                        <p class="text-xs text-slate-300 leading-relaxed">Cambió de formación durante el partido en 6 de cada 10 juegos y usó 116 alineaciones distintas en 129 partidos. Sus cambios mejoraban al equipo más que los de un DT promedio.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- LIMITACIONES DEL ESTUDIO Y CONCLUSIÓN -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div class="card-glow rounded-2xl p-6 text-xs text-slate-400 space-y-3 border-t-2 border-t-slate-700">
+            <h4 class="font-bold text-slate-200 text-sm flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-america-yellow"></i> Consideraciones y Limitaciones
+            </h4>
+            <p>1. <strong>Almada lleva 11 partidos.</strong> Lo suyo con el América es una señal temprana; lo que la respalda es su etapa en Pachuca (138 partidos).</p>
+            <p>2. <strong>La Femenil juega otra liga</strong> y no tiene datos de posición de jugadores. Siempre se compara contra su propia liga.</p>
+            <p>3. <strong>Los puntos merecidos solo ven los tiros.</strong> No ven expulsiones, lesiones ni el contexto del partido.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-white/10 text-center text-xs text-slate-500">
+        <p>El América por dentro: lo que es del club y lo que es del DT (Varonil y Femenil 2021-2026) &copy; 2026.</p>
+        <p class="mt-1">Investigación elaborada por Carlos Emilio Elizalde Hurtado, Emiliano Millán Giffard, Iván Artemio Ortega Buenrostro y Jorge Daniel Lafarga Axotla.</p>
+        <p class="mt-1">Datos de StatsBomb proporcionados para el Hackathon ISAC 2026. Aquí solo se publican resultados.</p>
+    </footer>
+
+    <script>
+        Chart.defaults.color = '#94A3B8';
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+        const GRID = 'rgba(255,255,255,0.06)';
+
+        // Percentil contra su liga (Excel, pestaña "A · Ficha vs liga")
+        const RASGOS = ['Tener la pelota','Jugar en campo rival','Paciencia','Pelotazo','Salir jugando corto','Atacar rápido','Atacar por bandas','Centros','Avanzar con el balón','Peligro que genera','Calidad de tiros','Presionar arriba','Ir por la pelota al perderla','Recuperar arriba','Línea adelantada','Equipo junto','Que le lleguen poco','Contragolpe','Frenar contragolpes','Balón parado'];
+        const DTS = {
+            solari:     { name: 'Solari',               color: '#3B82F6', on: false, v: [60,73,40,87,19,57,88,76,49,26,32,81,28,76,51,71,93,28,89,63] },
+            ortiz:      { name: 'Ortiz',                color: '#10B981', on: false, v: [85,94,76,28,16,31,10,92,89,95,87,75,58,85,84,68,89,83,87,85] },
+            jardine:    { name: 'Jardine',              color: '#F4CA16', on: true,  v: [85,94,94,6,78,24,56,63,86,86,91,19,53,54,61,94,89,60,91,86] },
+            almada:     { name: 'Almada (América)',     color: '#EF4444', on: true,  v: [83,87,73,30,39,44,57,64,96,94,40,82,3,82,53,0,26,98,41,99] },
+            almadaPach: { name: 'Almada (Pachuca)',     color: '#F97316', on: false, v: [61,64,25,49,33,76,44,61,94,76,39,79,58,76,90,76,74,74,60,63] },
+            villacampa: { name: 'Villacampa (Femenil)', color: '#EC4899', on: false, v: [98,98,96,4,66,19,86,98,98,96,83,96,32,98,null,null,94,94,92,90] }
+        };
+
+        function hexA(hex, a) {
+            const n = parseInt(hex.slice(1), 16);
+            return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
+        }
+
+        let radar = null;
+        function initRadar() {
+            const box = document.getElementById('radarChecks');
+            Object.values(DTS).forEach(d => {
+                const lab = document.createElement('label');
+                lab.className = 'cursor-pointer border px-2 py-1 rounded flex items-center gap-1.5';
+                lab.style.borderColor = hexA(d.color, .5);
+                lab.style.background = hexA(d.color, .12);
+                lab.style.color = d.color;
+                lab.innerHTML = `<input type="checkbox" ${d.on ? 'checked' : ''} style="accent-color:${d.color}"> ${d.name}`;
+                lab.querySelector('input').addEventListener('change', e => { d.on = e.target.checked; updateRadar(); });
+                box.appendChild(lab);
+            });
+            radar = new Chart(document.getElementById('chartRadar'), {
+                type: 'radar',
+                data: { labels: RASGOS, datasets: [] },
+                options: {
+                    responsive: true, maintainAspectRatio: false, spanGaps: true,
+                    scales: { r: { min: 0, max: 100, angleLines: { color: 'rgba(255,255,255,0.1)' }, grid: { color: 'rgba(255,255,255,0.1)' },
+                        pointLabels: { font: { size: 10 }, color: '#CBD5E1' }, ticks: { display: false, stepSize: 25 } } },
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } }
+                }
+            });
+            updateRadar();
+        }
+        function updateRadar() {
+            radar.data.datasets = Object.values(DTS).filter(d => d.on).map(d => ({
+                label: d.name, data: d.v, borderColor: d.color, backgroundColor: hexA(d.color, .15), borderWidth: 2, pointRadius: 2
+            }));
+            radar.update();
+        }
+
+        function initComparador() {
+            const a = document.getElementById('selA'), b = document.getElementById('selB');
+            Object.entries(DTS).forEach(([k, d]) => { a.add(new Option(d.name, k)); b.add(new Option(d.name, k)); });
+            a.value = 'jardine'; b.value = 'almada';
+            compararDTs();
+        }
+        function compararDTs() {
+            const ka = document.getElementById('selA').value, kb = document.getElementById('selB').value;
+            const A = DTS[ka], B = DTS[kb], out = document.getElementById('comparaSalida');
+            if (ka === kb) { out.innerHTML = '<p class="text-slate-400">Elige dos DTs distintos.</p>'; return; }
+            const diffs = RASGOS.map((r, i) => ({ r, a: A.v[i], b: B.v[i] }))
+                .filter(x => x.a !== null && x.b !== null).map(x => ({ ...x, d: x.a - x.b }));
+            const masA = diffs.filter(x => x.d > 0).sort((x, y) => y.d - x.d).slice(0, 3);
+            const masB = diffs.filter(x => x.d < 0).sort((x, y) => x.d - y.d).slice(0, 3);
+            const fila = (x, col) => `<li class="flex justify-between gap-3"><span>${x.r}</span><span class="font-bold" style="color:${col}">${x.a} vs ${x.b}</span></li>`;
+            let html = `<div><p class="text-xs uppercase font-bold mb-2" style="color:${A.color}">${A.name} hace más</p><ul class="space-y-1 text-slate-300">${masA.map(x => fila(x, A.color)).join('') || '<li>—</li>'}</ul></div>`;
+            html += `<div><p class="text-xs uppercase font-bold mb-2" style="color:${B.color}">${B.name} hace más</p><ul class="space-y-1 text-slate-300">${masB.map(x => fila(x, B.color)).join('') || '<li>—</li>'}</ul></div>`;
+            if (ka === 'villacampa' || kb === 'villacampa') html += '<p class="text-[11px] text-slate-500">La Femenil se compara contra su propia liga.</p>';
+            out.innerHTML = html;
+        }
+
+        function initClubDT() {
+            new Chart(document.getElementById('chartClubDT'), {
+                type: 'bar',
+                data: {
+                    labels: ['Presionar arriba', 'Pelotazo', 'Jugar en campo rival', 'Paciencia', 'Peligro que genera', 'Que le lleguen poco'],
+                    datasets: [
+                        { label: 'Si comparten DT', data: [32, 26, 2, 7, 2, 8], backgroundColor: '#F4CA16', borderRadius: 3 },
+                        { label: 'Si comparten club', data: [5, 11, 26, 22, 20, 19], backgroundColor: '#3B82F6', borderRadius: 3 }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    scales: { x: { grid: { color: GRID }, ticks: { callback: v => v + '%' } }, y: { grid: { display: false } } },
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
+                        tooltip: { callbacks: { label: c => `${c.dataset.label}: se parecen ${c.raw}% más` } } }
+                }
+            });
+        }
+
+        function initTorneos() {
+            new Chart(document.getElementById('chartTorneos'), {
+                type: 'line',
+                data: {
+                    labels: ['A21 Solari', 'C22 Ortiz', 'A22 Ortiz', 'C23 Ortiz', 'A23 Jardine ★', 'C24 Jardine ★', 'A24 Jardine ★', 'C25 Jardine', 'A25 Jardine', 'C26 Jardine', 'A26 Almada'],
+                    datasets: [
+                        { label: 'Presionar arriba', data: [80, 85, 78, 64, 9, 5, 9, 69, 34, 19, 82], borderColor: '#EF4444', backgroundColor: '#EF4444', tension: 0.25, pointRadius: 4 },
+                        { label: 'Equipo junto', data: [87, 65, 65, 77, 98, 96, 95, 97, 82, 74, 0], borderColor: '#F4CA16', backgroundColor: '#F4CA16', tension: 0.25, pointRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { y: { min: 0, max: 100, grid: { color: GRID } }, x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 50, minRotation: 50 } } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        function initDesgaste() {
+            new Chart(document.getElementById('chartDesgaste'), {
+                type: 'line',
+                data: {
+                    labels: ['A23 ★', 'C24 ★', 'A24 ★', 'C25', 'A25', 'C26'],
+                    datasets: [
+                        { label: 'Peligro que genera', data: [99, 93, 77, 90, 62, 32], borderColor: '#F4CA16', backgroundColor: '#F4CA16', tension: 0.25, pointRadius: 4 },
+                        { label: 'Calidad de sus tiros', data: [99, 99, 91, 94, 63, 3], borderColor: '#3B82F6', backgroundColor: '#3B82F6', tension: 0.25, pointRadius: 4 },
+                        { label: 'Que le lleguen poco', data: [94, 70, 93, 89, 98, 83], borderColor: '#10B981', backgroundColor: '#10B981', borderDash: [5, 4], tension: 0.25, pointRadius: 3 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { y: { min: 0, max: 100, grid: { color: GRID } }, x: { grid: { display: false } } },
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }
+                }
+            });
+        }
+
+        function initSuerte() {
+            new Chart(document.getElementById('chartSuerte'), {
+                type: 'bar',
+                data: {
+                    labels: ['Tricampeonato', 'Clausura 2025', 'Clausura 2026'],
+                    datasets: [{ data: [4.9, -2.1, -3.4], backgroundColor: ['#10B981', '#EF4444', '#EF4444'], borderRadius: 4 }]
+                },
+                options: {
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    scales: { x: { grid: { color: GRID }, ticks: { callback: v => (v > 0 ? '+' : '') + v } }, y: { grid: { display: false } } },
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => (c.raw > 0 ? '+' : '') + c.raw + ' puntos' } } }
+                }
+            });
+        }
+
+        function initFantasma() {
+            new Chart(document.getElementById('chartFantasma'), {
+                type: 'bar',
+                data: {
+                    labels: ['Jardine', 'Promedio liga', 'Almada en Pachuca', 'Almada en América'],
+                    datasets: [{ data: [21, 23, 26, 26], backgroundColor: ['#F4CA16', '#475569', '#F97316', '#EF4444'], borderRadius: 4 }]
+                },
+                options: {
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    scales: { x: { min: 0, max: 30, grid: { color: GRID } }, y: { grid: { display: false } } },
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' de cada 100' } } }
+                }
+            });
+        }
+
+        function initFemenil() {
+            new Chart(document.getElementById('chartFemenil'), {
+                type: 'bar',
+                data: {
+                    labels: ['Tiene la pelota', 'Juega en campo rival', 'Recupera en campo rival'],
+                    datasets: [
+                        { label: 'América Femenil', data: [64, 74, 51], backgroundColor: '#EC4899', borderRadius: 4 },
+                        { label: 'Promedio de su liga', data: [49, 52, 39], backgroundColor: '#475569', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: { y: { min: 0, max: 100, grid: { color: GRID }, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } },
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
+                        tooltip: { callbacks: { label: c => `${c.dataset.label}: ${c.raw}%` } } }
+                }
+            });
+        }
+
+        window.addEventListener('load', () => {
+            initRadar();
+            initComparador();
+            initClubDT();
+            initTorneos();
+            initDesgaste();
+            initSuerte();
+            initFantasma();
+            initFemenil();
+        });
+    </script>
+</body>
+</html>
