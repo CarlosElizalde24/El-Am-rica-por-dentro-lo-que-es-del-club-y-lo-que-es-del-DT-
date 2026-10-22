@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El América por dentro: lo que es del club y lo que es del DT (2021-2026)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        america: {
+                            navy: '#0b1326',
+                            card: '#131f37',
+                            border: '#203052',
+                            gold: '#f3c623',
+                            goldLight: '#fde047',
+                            blue: '#2563eb',
+                            green: '#10b981',
+                            red: '#ef4444',
+                            textMuted: '#94a3b8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b1326;
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #203052;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #f3c623;
+        }
+        .glass-card {
+            background: rgba(19, 31, 55, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF 0%, #f3c623 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-america-navy text-slate-100 min-h-screen selection:bg-america-gold selection:text-america-navy">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 glass-card border-b border-america-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-full bg-america-gold flex items-center justify-center font-extrabold text-america-navy text-xl shadow-lg shadow-america-gold/20">
+                        A
+                    </div>
+                    <div>
+                        <span class="font-bold text-sm sm:text-base tracking-tight block">EL AMÉRICA POR DENTRO</span>
+                        <span class="text-[10px] sm:text-xs text-america-textMuted block font-medium">HACKATHON ISAC 2026 · REPORTE TÁCTICO</span>
+                    </div>
+                </div>
+                <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold text-slate-300">
+                    <a href="#tesis" class="hover:text-america-gold transition-colors">Tesis</a>
+                    <a href="#metodologia" class="hover:text-america-gold transition-colors">Framework</a>
+                    <a href="#dts" class="hover:text-america-gold transition-colors">Los 4 DTs</a>
+                    <a href="#hallazgos" class="hover:text-america-gold transition-colors">Hallazgos 1-6</a>
+                    <a href="#kriptonita" class="hover:text-america-gold transition-colors">Kriptonita</a>
+                    <a href="#kpis" class="hover:text-america-gold transition-colors">Recomendaciones & KPIs</a>
+                </nav>
+                <a href="#simulador" class="px-3.5 py-1.5 rounded-lg bg-america-gold text-america-navy font-bold text-xs hover:bg-america-goldLight transition-all shadow-md shadow-america-gold/10">
+                    <i class="fa-solid fa-sliders mr-1.5"></i>Simulador
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- HEADER & EXECUTIVE SUMMARY / TESIS -->
+        <section id="tesis" class="relative overflow-hidden rounded-2xl glass-card p-6 sm:p-10 border border-america-border">
+            <div class="absolute -right-10 -top-10 w-96 h-96 bg-america-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-america-gold/10 border border-america-gold/30 text-america-gold text-xs font-semibold mb-4">
+                <i class="fa-solid fa-microchip"></i> Analytics & StatsBomb 360° Data (2021 - 2026)
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight gold-gradient-text mb-4 leading-tight">
+                Lo que es del América y lo que es del DT
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-4xl leading-relaxed mb-8">
+                Análisis táctico, de rendimiento y estructura de juego basado en <span class="text-white font-bold">1,811 partidos de Liga MX</span> (Apertura 2021 – Apertura 2026), tracking de eventos y datos StatsBomb 360°.
+            </p>
+
+            <!-- Tesis en 3 frases -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-america-navy/80 p-5 rounded-xl border border-america-border/80 hover:border-america-gold/50 transition-all">
+                    <div class="w-8 h-8 rounded-lg bg-america-gold/20 flex items-center justify-center text-america-gold font-bold mb-3">1</div>
+                    <h3 class="font-bold text-sm text-white mb-2">Identidad Estructural del Club</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        El América tiene una identidad que no depende del DT: jugar en campo rival, tener la pelota y conceder poco. Con Ortiz y Jardine esas 3 variables estuvieron dentro del <span class="text-america-gold font-semibold">top 15% de la liga (Percentil &gt;85)</span>.
+                    </p>
+                </div>
+                <div class="bg-america-navy/80 p-5 rounded-xl border border-america-border/80 hover:border-america-gold/50 transition-all">
+                    <div class="w-8 h-8 rounded-lg bg-america-blue/20 flex items-center justify-center text-america-blue font-bold mb-3">2</div>
+                    <h3 class="font-bold text-sm text-white mb-2">Palancas Exclusivas del DT</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Lo que cambia cada DT es cómo presiona y cómo sale desde atrás. En sus 3 torneos campeones, Jardine presionó menos que el <span class="text-america-blue font-semibold">90% de la liga</span> con un bloque muy compacto. Su modelo sufrió desgaste hacia 2026.
+                    </p>
+                </div>
+                <div class="bg-america-navy/80 p-5 rounded-xl border border-america-border/80 hover:border-america-gold/50 transition-all">
+                    <div class="w-8 h-8 rounded-lg bg-america-green/20 flex items-center justify-center text-america-green font-bold mb-3">3</div>
+                    <h3 class="font-bold text-sm text-white mb-2">El Desafío de la Era Almada</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Almada trajo lo opuesto: presión alta y verticalidad. Hoy saca más puntos de los que su juego merece y arrastra la "zona fantasma" frente a su área. La meta táctica: <span class="text-america-green font-semibold">presionar como Almada sin perder el bloque de Jardine</span>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pregunta Central -->
+            <div class="bg-gradient-to-r from-america-gold/15 to-transparent p-4 rounded-xl border-l-4 border-america-gold flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <span class="text-[11px] uppercase tracking-wider text-america-gold font-bold block">Pregunta de Gestión Táctica</span>
+                    <p class="text-sm font-semibold text-white">¿Cómo presionar con la agresividad de Almada sin desproteger el carril central frente al área?</p>
+                </div>
+                <div class="flex items-center gap-4 text-xs font-mono text-slate-300">
+                    <div><span class="text-america-gold font-bold">1,811</span> Muestras</div>
+                    <div><span class="text-america-gold font-bold">66</span> DTs</div>
+                    <div><span class="text-america-gold font-bold">111</span> Etapas</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRAMEWORK & METHODOLOGY -->
+        <section id="metodologia" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-america-border pb-3">
+                <h2 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <i class="fa-solid fa-book-bookmark text-america-gold"></i> Framework: Definiciones, Supuestos y Límites
+                </h2>
+                <span class="text-xs text-america-textMuted">Convocatoria Oficial ISAC 2026</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Tabla de Definiciones -->
+                <div class="lg:col-span-2 glass-card rounded-2xl p-5 border border-america-border overflow-hidden">
+                    <h3 class="font-bold text-sm text-white mb-3">Glosario de Métricas y Métodos Metodológicos</h3>
+                    <div class="overflow-x-auto custom-scrollbar max-h-96">
+                        <table class="w-full text-left text-xs">
+                            <thead class="bg-america-navy/90 text-america-gold uppercase sticky top-0 font-semibold border-b border-america-border">
+                                <tr>
+                                    <th class="p-2.5">Concepto</th>
+                                    <th class="p-2.5">Cómo lo definimos (StatsBomb / Analytics)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-america-border/50 text-slate-300">
+                                <tr><td class="p-2.5 font-bold text-white">Etapa</td><td class="p-2.5">Un DT en un club (ej. "Jardine América"). Solo etapas con 5+ partidos. El interino de &lt;5 partidos queda fuera.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Cancha / Tercios</td><td class="p-2.5">120x80 yardas; ataque a la derecha. Tercios Propio, Medio y Último de 40 yardas c/u.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Pase / Conducción Progresiva</td><td class="p-2.5">Acción completa que avanza 10+ yardas y termina en campo rival.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Ocasión Clara / Presión Alta</td><td class="p-2.5">Tiro sin penal con xG &ge; 0.30. Presión alta: efectuada en el último tercio.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">PPDA</td><td class="p-2.5">Pases que le deja dar al rival en su salida por cada acción defensiva. Menos = presiona más.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Transición / Balón Parado</td><td class="p-2.5">Transición: recupera y tira en &le;15s sin perder posesión. Balón parado: córner o tiro libre.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Recibir "solo" (360°)</td><td class="p-2.5">Ningún rival a menos de 5 yardas (&approx;4.5 m) al momento de la recepción.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Puntos Merecidos</td><td class="p-2.5">Cada partido simulado 10,000 veces (Monte Carlo) con sus mismos tiros y xG generado/concedido.</td></tr>
+                                <tr><td class="p-2.5 font-bold text-white">Tipo de Rival</td><td class="p-2.5">Clasificación de equipos en 5 estilos según 20 rasgos de juego.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 20 Dimensiones & Límites -->
+                <div class="space-y-4">
+                    <div class="glass-card rounded-2xl p-5 border border-america-border">
+                        <h3 class="font-bold text-sm text-white mb-2 text-america-gold">Las 20 Dimensiones de Estilo</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                            Divididas en: <span class="text-white font-medium">Con balón</span> (posesión, campo rival, paciencia, pelotazo, salida corta, verticalidad, fuera, centros, conducción, vol. peligro, calidad tiro), <span class="text-white font-medium">Sin balón</span> (presión arriba, contrapresión, rec. alta, línea alta, bloque corto, solidez), <span class="text-white font-medium">Transiciones</span> y <span class="text-white font-medium">Balón parado</span>.
+                        </p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-5 border border-red-500/30 bg-red-500/5">
+                        <h3 class="font-bold text-sm text-red-400 mb-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Límites Metodológicos a Declarar
+                        </h3>
+                        <ul class="text-[11px] text-slate-300 space-y-1.5 list-disc pl-4">
+                            <li><strong class="text-white">Almada con América:</strong> N=11 partidos (señal temprana; N=138 en Pachuca es la referencia sólida).</li>
+                            <li><strong class="text-white">Datos 360°:</strong> Limita la visión a jugadores dentro de la toma de cámara.</li>
+                            <li><strong class="text-white">Puntos Merecidos:</strong> Salen solo de tiros, sin evaluar rojas, lesiones ni contexto.</li>
+                            <li><strong class="text-white">Cambios de Rol:</strong> Miden toques con balón, no posicionamiento sin balón.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DT PROFILES -->
+        <section id="dts" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-america-border pb-3">
+                <div>
+                    <h2 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                        <i class="fa-solid fa-users-gear text-america-gold"></i> Así juega cada DT del América
+                    </h2>
+                    <p class="text-xs text-america-textMuted">Resumen táctico y radiografía de rendimiento por etapa</p>
+                </div>
+            </div>
+
+            <!-- Fichas de los 4 DTs -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- Solari -->
+                <div class="glass-card rounded-2xl p-5 border border-america-border hover:border-slate-400 transition-all relative overflow-hidden">
+                    <div class="text-xs font-mono font-bold text-slate-400 mb-1">JUL 2021 - MAR 2022</div>
+                    <h3 class="text-lg font-bold text-white">Santiago Solari</h3>
+                    <div class="text-xs text-america-gold font-medium mb-3">Defender bien y mandarla larga</div>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-center bg-america-navy/80 p-2.5 rounded-xl border border-america-border mb-3 text-xs">
+                        <div><span class="block text-slate-400 text-[10px]">Partidos</span> <strong class="text-white">27</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Pts/Partido</span> <strong class="text-white">1.56</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Favor</span> <strong class="text-white">1.15</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Contra</span> <strong class="text-white">1.00</strong></div>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Concede muy poco (Solidez P93, Aguanta contra P89). Presiona salida (P81) pero directo con balón: Pelotazo P87, Bandas P88. Genera poco peligro (P26).
+                    </p>
+                </div>
+
+                <!-- Ortiz -->
+                <div class="glass-card rounded-2xl p-5 border border-america-border hover:border-america-gold transition-all relative overflow-hidden">
+                    <div class="text-xs font-mono font-bold text-america-gold mb-1">MAR 2022 - MAY 2023</div>
+                    <h3 class="text-lg font-bold text-white">Fernando Ortiz</h3>
+                    <div class="text-xs text-america-gold font-medium mb-3">El América más dominante</div>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-center bg-america-navy/80 p-2.5 rounded-xl border border-america-border mb-3 text-xs">
+                        <div><span class="block text-slate-400 text-[10px]">Partidos</span> <strong class="text-white">55</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Pts/Partido</span> <strong class="text-america-gold">2.00</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Favor</span> <strong class="text-white">2.05</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Contra</span> <strong class="text-white">1.07</strong></div>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Vive en campo rival (P94) y máximo generador de peligro (P95). Presiona arriba (P75, Rec. P85) con línea alta (P84). Ataca por el centro pero remata con centros (P92).
+                    </p>
+                </div>
+
+                <!-- Jardine -->
+                <div class="glass-card rounded-2xl p-5 border border-america-border hover:border-america-blue transition-all relative overflow-hidden">
+                    <div class="text-xs font-mono font-bold text-america-blue mb-1">JUL 2023 - MAY 2026</div>
+                    <h3 class="text-lg font-bold text-white">André Jardine</h3>
+                    <div class="text-xs text-america-blue font-medium mb-3">Control sin prisa y bloque junto</div>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-center bg-america-navy/80 p-2.5 rounded-xl border border-america-border mb-3 text-xs">
+                        <div><span class="block text-slate-400 text-[10px]">Partidos</span> <strong class="text-white">129</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Pts/Partido</span> <strong class="text-white">1.86</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Favor</span> <strong class="text-white">1.72</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Contra</span> <strong class="text-america-green">0.92</strong></div>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Posesión (P85), Paciencia (P94), Salida corta (P78). Cero pelotazo (P6). No presiona arriba (P19), espera en bloque muy junto (P94). Alta calidad de tiro (P91).
+                    </p>
+                </div>
+
+                <!-- Almada -->
+                <div class="glass-card rounded-2xl p-5 border border-america-border hover:border-america-green transition-all relative overflow-hidden">
+                    <div class="text-xs font-mono font-bold text-america-green mb-1">JUL 2026 - HOY (N=11)</div>
+                    <h3 class="text-lg font-bold text-white">Jorge Almada</h3>
+                    <div class="text-xs text-america-green font-medium mb-3">Vertical, agresivo y directo</div>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-center bg-america-navy/80 p-2.5 rounded-xl border border-america-border mb-3 text-xs">
+                        <div><span class="block text-slate-400 text-[10px]">Partidos</span> <strong class="text-white">11</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Pts/Partido</span> <strong class="text-america-green">2.18</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Favor</span> <strong class="text-white">2.45</strong></div>
+                        <div><span class="block text-slate-400 text-[10px]">Goles Contra</span> <strong class="text-red-400">1.27</strong></div>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Presión arriba (P82), Mata al contragolpe (P98) y Conducción (P96). Máximo peligro de balón parado (P99). Costo: Bloque corto P0, Solidez P26.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tabla de Distribución de Peligro xG sin penales -->
+            <div class="glass-card rounded-2xl p-5 border border-america-border">
+                <h3 class="font-bold text-sm text-white mb-3">Origen del Peligro (% de xG sin penales) y Llegadas al Último Tercio</h3>
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-center text-xs">
+                        <thead class="bg-america-navy/90 text-america-gold font-semibold uppercase border-b border-america-border">
+                            <tr>
+                                <th class="p-2.5 text-left">Métrica de Ataque</th>
+                                <th class="p-2.5">Solari</th>
+                                <th class="p-2.5">Ortiz</th>
+                                <th class="p-2.5">Jardine</th>
+                                <th class="p-2.5 text-america-green">Almada (AME)</th>
+                                <th class="p-2.5 text-slate-400">Promedio Liga MX</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-america-border/50 text-slate-300">
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Llegadas al último tercio / partido</td>
+                                <td class="p-2.5">39</td>
+                                <td class="p-2.5">51</td>
+                                <td class="p-2.5">52</td>
+                                <td class="p-2.5 font-bold text-america-green">54</td>
+                                <td class="p-2.5 text-slate-400">43</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Entradas por el centro (%)</td>
+                                <td class="p-2.5">16%</td>
+                                <td class="p-2.5 font-bold text-america-gold">24%</td>
+                                <td class="p-2.5">19%</td>
+                                <td class="p-2.5">19%</td>
+                                <td class="p-2.5 text-slate-400">20%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Peligro que nace de Centro</td>
+                                <td class="p-2.5 font-bold text-white">20%</td>
+                                <td class="p-2.5">15%</td>
+                                <td class="p-2.5">15%</td>
+                                <td class="p-2.5 text-red-400">7%</td>
+                                <td class="p-2.5 text-slate-400">16%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Peligro de Pase Filtrado</td>
+                                <td class="p-2.5">3%</td>
+                                <td class="p-2.5 text-america-gold">7%</td>
+                                <td class="p-2.5 text-america-blue">7%</td>
+                                <td class="p-2.5">4%</td>
+                                <td class="p-2.5 text-slate-400">5%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Peligro de Contragolpe</td>
+                                <td class="p-2.5">0%</td>
+                                <td class="p-2.5">3%</td>
+                                <td class="p-2.5">3%</td>
+                                <td class="p-2.5 font-bold text-america-green">8% (3.5x Liga)</td>
+                                <td class="p-2.5 text-slate-400">2%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Peligro de Balón Parado</td>
+                                <td class="p-2.5 font-bold text-slate-200">39%</td>
+                                <td class="p-2.5">28%</td>
+                                <td class="p-2.5">32%</td>
+                                <td class="p-2.5 font-bold text-america-green">36%</td>
+                                <td class="p-2.5 text-slate-400">30%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- HALLAZGOS 1 AL 6 -->
+        <section id="hallazgos" class="space-y-10">
+            <div class="border-b border-america-border pb-3">
+                <h2 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chart-diagram text-america-gold"></i> Hallazgos Principales (1 al 6)
+                </h2>
+                <p class="text-xs text-america-textMuted">Análisis empírico comparativo con nivel de confianza estadístico</p>
+            </div>
+
+            <!-- HALLAZGO 1 -->
+            <div class="glass-card rounded-2xl p-6 border border-america-border space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full bg-america-gold/20 text-america-gold text-xs font-extrabold">HALLAZGO 1</span>
+                        <h3 class="text-lg font-bold text-white">Lo que es del Club vs. Lo que es del DT</h3>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-mono">Confianza: Media (N=48 pares DT, N=301 pares Club)</span>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    En toda la Liga MX (111 etapas analizadas), cuando un DT cambia de club se lleva <strong class="text-white">cómo presiona y cómo sale desde atrás</strong>. Por el contrario, el <strong class="text-white">dominio, el peligro generado y la solidez defensiva se quedan con la plantilla</strong>. En América, Jardine heredó la base de Ortiz (similitud de 0.79; el modelo estadístico confunde 31 de los 55 partidos de Ortiz como si fueran de Jardine).
+                </p>
+
+                <!-- Gráfica Hallazgo 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-america-navy/90 p-4 rounded-xl border border-america-border">
+                        <h4 class="text-xs font-bold text-america-gold mb-3 text-center">Variación de Estilo en América (Percentiles Liga MX)</h4>
+                        <div class="h-64"><canvas id="chartHallazgo1"></canvas></div>
+                    </div>
+                    <div class="bg-america-navy/90 p-4 rounded-xl border border-america-border flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs font-bold text-white mb-2">Evidencia Estadística en la Liga MX (66 DTs)</h4>
+                            <p class="text-[11px] text-slate-300 mb-3">Qué tanto se parecen dos equipos si comparten DT vs si comparten Club:</p>
+                            
+                            <div class="space-y-2 text-xs">
+                                <div class="p-2 rounded bg-america-card flex justify-between items-center">
+                                    <span>Presión arriba</span>
+                                    <span class="font-mono text-america-gold">32% DT vs 5% Club <strong class="text-xs text-white">(Lo define el DT)</strong></span>
+                                </div>
+                                <div class="p-2 rounded bg-america-card flex justify-between items-center">
+                                    <span>Pelotazo</span>
+                                    <span class="font-mono text-america-gold">26% DT vs 11% Club <strong class="text-xs text-white">(Lo define el DT)</strong></span>
+                                </div>
+                                <div class="p-2 rounded bg-america-card flex justify-between items-center">
+                                    <span>Jugar en campo rival</span>
+                                    <span class="font-mono text-america-blue">2% DT vs 26% Club <strong class="text-xs text-white">(Lo define el Club)</strong></span>
+                                </div>
+                                <div class="p-2 rounded bg-america-card flex justify-between items-center">
+                                    <span>Volumen de Peligro</span>
+                                    <span class="font-mono text-america-blue">2% DT vs 20% Club <strong class="text-xs text-white">(Lo define el Club)</strong></span>
+                                </div>
+                                <div class="p-2 rounded bg-america-card flex justify-between items-center">
+                                    <span>Solidez Defensiva</span>
+                                    <span class="font-mono text-america-blue">8% DT vs 19% Club <strong class="text-xs text-white">(Lo define el Club)</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-america-gold/10 rounded-lg border border-america-gold/30 text-[11px] text-slate-200 mt-4">
+                            <i class="fa-solid fa-lightbulb text-america-gold mr-1"></i> <strong>Aplica a Directiva:</strong> Si se busca cambiar la presión, se compra al DT. Si se quiere más peligro o solidez, se adquiere vía plantilla (fichajes).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HALLAZGO 2 -->
+            <div class="glass-card rounded-2xl p-6 border border-america-border space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full bg-america-blue/20 text-america-blue text-xs font-extrabold">HALLAZGO 2</span>
+                        <h3 class="text-lg font-bold text-white">El Tricampeonato sin presionar</h3>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-mono">Confianza: Alta (70 partidos de título)</span>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    En sus 3 torneos campeones (Apertura 2023, Clausura 2024, Apertura 2024), el América de Jardine fue de los equipos que menos presionaban en toda la liga (<span class="text-america-gold font-bold">Percentiles 9, 5 y 9</span>) y de los más compactos (<span class="text-america-blue font-bold">Percentiles 98, 96 y 95</span>). El rival daba entre 21 y 23 pases por acción defensiva (PPDA) vs 14-15 con Ortiz (+50% libertad de salida).
+                </p>
+
+                <!-- Chart Hallazgo 2 -->
+                <div class="bg-america-navy/90 p-4 rounded-xl border border-america-border">
+                    <h4 class="text-xs font-bold text-slate-200 mb-2">Evolución Torneo a Torneo: Presión Arriba vs. Bloque Corto (Percentil)</h4>
+                    <div class="h-64"><canvas id="chartHallazgo2"></canvas></div>
+                </div>
+            </div>
+
+            <!-- HALLAZGO 3 -->
+            <div class="glass-card rounded-2xl p-6 border border-america-border space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-extrabold">HALLAZGO 3</span>
+                        <h3 class="text-lg font-bold text-white">El desgaste de Jardine y la regresión en Liguilla</h3>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-mono">Confianza: Alta en Caída / Media en Liguilla (N=32 partidos)</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-white">Desgaste Ofensivo (A23 a C26)</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Del A23 al C26, el volumen de peligro cayó del <strong class="text-america-gold">Percentil 99 al 32</strong> y la calidad de tiro del <strong class="text-america-gold">Percentil 99 al 3</strong>. Los goles esperados sin penales cayeron de 1.77 a 1.04 por partido (<span class="text-red-400 font-bold">-41%</span>). La solidez defensiva se mantuvo alta (P83 en C26).
+                        </p>
+                        <div class="bg-america-navy/80 p-3 rounded-lg border border-america-border text-xs space-y-1">
+                            <div class="flex justify-between"><span>xG sin penales/partido (A23):</span> <strong class="text-america-green">1.77</strong></div>
+                            <div class="flex justify-between"><span>xG sin penales/partido (C26):</span> <strong class="text-red-400">1.04</strong></div>
+                            <div class="flex justify-between"><span>Diferencia Relativa:</span> <strong class="text-red-400">-41.2%</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-bold text-white">Monte Carlo: Puntos Reales vs Merecidos en Liguilla</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            En el Tricampeonato hubo fortuna a favor (+4.9 pts sobre lo merecido; 31 goles metidos con 25.2 xG). Luego se revirtió: <span class="text-red-400 font-bold">-2.1 pts en C25</span> y <span class="text-red-400 font-bold">-3.4 pts en C26</span> (eliminados por Pumas tras empatar 3-3 y 3-3 generando 6.2 xG vs 1.7 concedido).
+                        </p>
+                        <div class="h-44 bg-america-navy/90 p-2 rounded-xl border border-america-border">
+                            <canvas id="chartHallazgo3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HALLAZGO 4 & 5 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- HALLAZGO 4 -->
+                <div class="glass-card rounded-2xl p-6 border border-america-border space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-full bg-america-gold/20 text-america-gold text-xs font-extrabold">HALLAZGO 4</span>
+                        <span class="text-[11px] font-mono text-slate-400">Confianza: Alta (N=79)</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">El "Carácter" Medido: Respuesta al Golpe</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Tras recibir un gol, los 10 minutos siguientes del América de Jardine muestran resiliencia: genera <strong class="text-america-gold">1.21 xG/90 (+39% vs liga)</strong> y recibe otro gol solo el <strong class="text-america-green">5% de las veces (vs 12% promedio liga)</strong>.
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-center text-[11px] border border-america-border">
+                            <thead class="bg-america-navy text-america-gold">
+                                <tr><th>DT / Entorno</th><th>xGF/90</th><th>xGA/90</th><th>Recibe otro</th></tr>
+                            </thead>
+                            <tbody class="divide-y divide-america-border/50 text-slate-300">
+                                <tr><td class="text-left p-1.5 font-bold">Liga MX</td><td>0.87</td><td>0.93</td><td class="text-red-400">12%</td></tr>
+                                <tr><td class="text-left p-1.5 font-bold text-america-blue">Jardine (N=79)</td><td class="text-america-gold font-bold">1.21</td><td class="text-america-green font-bold">0.61</td><td class="text-america-green font-bold">5%</td></tr>
+                                <tr><td class="text-left p-1.5 font-bold text-america-gold">Ortiz (N=44)</td><td>1.10</td><td>0.43</td><td>9%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- HALLAZGO 5 -->
+                <div class="glass-card rounded-2xl p-6 border border-america-border space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 rounded-full bg-america-blue/20 text-america-blue text-xs font-extrabold">HALLAZGO 5</span>
+                        <span class="text-[11px] font-mono text-slate-400">Confianza: Alta (N=129)</span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Jardine: El DT de los Ajustes en Directo</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Cambiaba de formación en el partido en el <strong class="text-america-gold">60% de los juegos</strong> (Ortiz 35%, Solari 11%, Almada 9%). Usó 116 alineaciones distintas en 129 partidos. Sus cambios generaban <strong class="text-america-blue">+0.28 xG neto/90</strong>.
+                    </p>
+                    <div class="bg-america-navy/80 p-3 rounded-lg border border-america-border text-xs space-y-1">
+                        <div class="text-[11px] text-slate-300"><strong class="text-white">Ajustes posicionales:</strong> Fidalgo pasó con Ortiz a jugar 5 yd más atrás (+7.3 pases prog/partido). Jardine atrasó laterales (Fuentes -9yd) y adelantó central (Reyes +6.5yd).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HALLAZGO 6 -->
+            <div class="glass-card rounded-2xl p-6 border border-america-border space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full bg-america-green/20 text-america-green text-xs font-extrabold">HALLAZGO 6</span>
+                        <h3 class="text-lg font-bold text-white">Almada: El Opuesto y la "Zona Fantasma"</h3>
+                    </div>
+                    <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-mono">Confianza: Baja AME (N=11) / Alta Pachuca (N=138)</span>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    Almada llegó a América y movió las palancas al revés: Presión Arriba P82, Contragolpe P98, pero Solidez P26 y Bloque Corto P0. StatsBomb 360° revela que el rival recibe <strong class="text-red-400 font-bold">SOLO sin marca en la zona frente al área 26 de cada 100 veces (vs 23 Liga MX)</strong>. En Pachuca (138 partidos) registraba exactamente la misma cifra (26/100).
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-xs">
+                    <div class="bg-america-navy/90 p-4 rounded-xl border border-america-border">
+                        <span class="text-slate-400 text-[10px] block mb-1">Zona Frente al Área (Centro)</span>
+                        <span class="text-xl font-bold text-red-400 block mb-1">26% de Recepciones Solas</span>
+                        <span class="text-[10px] text-slate-400">Liga MX: 23% | Jardine: 21%</span>
+                    </div>
+                    <div class="bg-america-navy/90 p-4 rounded-xl border border-america-border">
+                        <span class="text-slate-400 text-[10px] block mb-1">Carril Interior Izquierdo</span>
+                        <span class="text-xl font-bold text-red-400 block mb-1">42% de Recepciones Solas</span>
+                        <span class="text-[10px] text-slate-400">Liga MX: 36% | Jardine: 30%</span>
+                    </div>
+                    <div class="bg-america-navy/90 p-4 rounded-xl border border-america-border">
+                        <span class="text-slate-400 text-[10px] block mb-1">Sobre-Rendimiento de Puntos</span>
+                        <span class="text-xl font-bold text-america-gold block mb-1">+0.47 Pts/Partido de Más</span>
+                        <span class="text-[10px] text-slate-400">Merece 1.71 Pts/P | Lleva 2.18 Pts/P</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KRIPTONITA -->
+        <section id="kriptonita" class="space-y-6">
+            <div class="border-b border-america-border pb-3">
+                <h2 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-america-gold"></i> Vulnerabilidades de Estilo: Kriptonita por DT
+                </h2>
+                <p class="text-xs text-america-textMuted">Rendimiento relativo al enfrentar los 5 clusters de rivales de la Liga MX</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="glass-card rounded-2xl p-5 border border-america-border space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-sm text-white">Kriptonita de Jardine</h3>
+                        <span class="text-xs font-mono text-america-blue">13 PJ</span>
+                    </div>
+                    <div class="text-xs font-semibold text-america-gold">Paciencia + Salida corta (Baja rec. alta)</div>
+                    <p class="text-[11px] text-slate-300">Ejemplos: San Luis A24, Puebla A22, Pumas C26.</p>
+                    <div class="p-2 bg-red-500/10 rounded border border-red-500/30 text-xs font-mono text-red-400 text-center">
+                        -0.26 xG/partido vs normal
+                    </div>
+                    <p class="text-[10px] text-slate-400 italic">Pierde su contra, bloque corto y solidez. Pumas lo eliminó en C26.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 border border-america-border space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-sm text-white">Kriptonita de Ortiz</h3>
+                        <span class="text-xs font-mono text-america-gold">13 PJ</span>
+                    </div>
+                    <div class="text-xs font-semibold text-america-gold">Pelotazo + Verticalidad directa</div>
+                    <p class="text-[11px] text-slate-300">Ejemplos: León A24, Cruz Azul A22, Atlas A24, Necaxa.</p>
+                    <div class="p-2 bg-red-500/10 rounded border border-red-500/30 text-xs font-mono text-red-400 text-center">
+                        -0.20 xG / -0.49 Pts por partido
+                    </div>
+                    <p class="text-[10px] text-slate-400 italic">Le saltaban la presión alta con envíos largos directos.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-5 border border-america-border space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-sm text-white">Kriptonita de Almada</h3>
+                        <span class="text-xs font-mono text-america-green">26 PJ (Pachuca)</span>
+                    </div>
+                    <div class="text-xs font-semibold text-america-gold">Conducción + Línea defensiva alta</div>
+                    <p class="text-[11px] text-slate-300">Ejemplos: Tigres A26, Pumas A24, León C23, Mazatlán A24.</p>
+                    <div class="p-2 bg-red-500/10 rounded border border-red-500/30 text-xs font-mono text-red-400 text-center">
+                        -0.15 xG/partido vs normal
+                    </div>
+                    <p class="text-[10px] text-slate-400 italic">Su rival favorito en Pachuca (Salida corta +0.21 xG) es la kriptonita de Jardine.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPIS & RECOMENDACIONES -->
+        <section id="kpis" class="space-y-8">
+            <div class="border-b border-america-border pb-3">
+                <h2 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-check text-america-gold"></i> Recomendaciones al Cuerpo Técnico y Dashboard KPI
+                </h2>
+                <p class="text-xs text-america-textMuted">Plan táctico correctivo para sostener el rendimiento en el torneo</p>
+            </div>
+
+            <!-- Dashboard KPI Table -->
+            <div class="glass-card rounded-2xl p-6 border border-america-border space-y-4">
+                <h3 class="font-bold text-sm text-white">Matriz de Objetivos KPI Partido a Partido</h3>
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-center text-xs">
+                        <thead class="bg-america-navy text-america-gold font-bold uppercase border-b border-america-border">
+                            <tr>
+                                <th class="p-2.5 text-left">Indicador Clave (KPI)</th>
+                                <th class="p-2.5">Hoy (Almada 11 PJ)</th>
+                                <th class="p-2.5">Etapa Jardine</th>
+                                <th class="p-2.5">Mediana Liga MX</th>
+                                <th class="p-2.5 text-america-green">Meta Sugerida CT</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-america-border/50 text-slate-300">
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Largo del bloque al salir rival (yardas, 360°)</td>
+                                <td class="p-2.5 font-bold text-red-400">29.2 yd</td>
+                                <td class="p-2.5">25.1 yd</td>
+                                <td class="p-2.5">26.3 yd</td>
+                                <td class="p-2.5 font-bold text-america-green">&le; 26.0 yd</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Presión PPDA (pases rival por acción def.)</td>
+                                <td class="p-2.5 font-bold text-america-green">13.9</td>
+                                <td class="p-2.5">19.7</td>
+                                <td class="p-2.5">16.3</td>
+                                <td class="p-2.5 font-bold text-america-green">&le; 15.0 (Mantener)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Contrapresiones por cada 10 pérdidas</td>
+                                <td class="p-2.5 font-bold text-red-400">2.4</td>
+                                <td class="p-2.5">-</td>
+                                <td class="p-2.5">2.9</td>
+                                <td class="p-2.5 font-bold text-america-green">&ge; 3.0</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Rival solo frente al área (% recepciones 360°)</td>
+                                <td class="p-2.5 font-bold text-red-400">26%</td>
+                                <td class="p-2.5">21%</td>
+                                <td class="p-2.5">23%</td>
+                                <td class="p-2.5 font-bold text-america-green">&le; 23%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Peligro concedido (xGA por partido)</td>
+                                <td class="p-2.5 font-bold text-red-400">1.32</td>
+                                <td class="p-2.5">0.86</td>
+                                <td class="p-2.5">1.16</td>
+                                <td class="p-2.5 font-bold text-america-green">&le; 1.00</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 text-left font-bold text-white">Diferencia Pts Reales vs Merecidos (xPts)</td>
+                                <td class="p-2.5 font-bold text-america-gold">+0.47</td>
+                                <td class="p-2.5">+0.07</td>
+                                <td class="p-2.5">0.00</td>
+                                <td class="p-2.5 font-bold text-red-400">Alarma si &gt; +0.30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE SIMULATOR FOR TECHNICAL STAFF -->
+            <div id="simulador" class="glass-card rounded-2xl p-6 border border-america-gold/40 bg-gradient-to-b from-america-card to-america-navy space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div>
+                        <span class="px-2.5 py-1 rounded bg-america-gold/20 text-america-gold text-[10px] font-bold uppercase tracking-wider">Herramienta Interactiva</span>
+                        <h3 class="text-lg font-bold text-white">Simulador Táctico de Proyección de xGA y Puntos</h3>
+                    </div>
+                    <span class="text-xs text-slate-400">Ajuste las variables defensivas para simular la corrección</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-5">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <label for="inputBloque" class="text-slate-200">Largo del Bloque (Yardas):</label>
+                                <span id="valBloque" class="text-america-gold">29.2 yd</span>
+                            </div>
+                            <input type="range" id="inputBloque" min="22" max="32" step="0.5" value="29.2" class="w-full accent-america-gold bg-america-navy rounded">
+                            <span class="text-[10px] text-slate-400 block mt-1">Sugerido: Subir la línea defensiva para reducir a &le; 25.5 yd</span>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <label for="inputZona" class="text-slate-200">Recepción Sola Frente al Área (%):</label>
+                                <span id="valZona" class="text-america-gold">26%</span>
+                            </div>
+                            <input type="range" id="inputZona" min="18" max="30" step="1" value="26" class="w-full accent-america-gold bg-america-navy rounded">
+                            <span class="text-[10px] text-slate-400 block mt-1">Sugerido: Contención fijo para cerrar la zona al &le; 22%</span>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <label for="inputContra" class="text-slate-200">Contrapresiones / 10 pérdidas:</label>
+                                <span id="valContra" class="text-america-gold">2.4</span>
+                            </div>
+                            <input type="range" id="inputContra" min="1.5" max="4.5" step="0.1" value="2.4" class="w-full accent-america-gold bg-america-navy rounded">
+                        </div>
+                    </div>
+
+                    <!-- Simulator Output Box -->
+                    <div class="bg-america-navy p-6 rounded-2xl border border-america-border space-y-4 text-center">
+                        <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold block">Resultado Proyectado del Modelo</span>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-3 bg-america-card rounded-xl border border-america-border">
+                                <span class="text-[10px] text-slate-400 block">Peligro Concedido Estimado</span>
+                                <span id="resXGA" class="text-2xl font-bold text-red-400">1.32 xGA</span>
+                            </div>
+                            <div class="p-3 bg-america-card rounded-xl border border-america-border">
+                                <span class="text-[10px] text-slate-400 block">Puntos Merecidos Proyectados</span>
+                                <span id="resXPts" class="text-2xl font-bold text-america-gold">1.71 Pts/P</span>
+                            </div>
+                        </div>
+
+                        <div id="simFeedback" class="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-xs text-red-300">
+                            Estado Actual: Riesgo de regresión de puntos por desprotección defensiva.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-america-border/60 py-8 text-center text-xs text-america-textMuted bg-america-navy">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>El América por dentro: lo que es del club y lo que es del DT (2021-2026) · Hackathon ISAC 2026</p>
+            <p class="text-[11px] text-slate-300">Procesamiento de 1,811 partidos de Liga MX. Datos no publicados en cumplimiento con regulaciones de StatsBomb.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Charts and Simulator Logic -->
+    <script>
+        // Chart 1: Hallazgo 1
+        const ctx1 = document.getElementById('chartHallazgo1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Presión Arriba', 'Pelotazo', 'Salida Corta', 'Campo Rival', 'Posesión', 'Solidez'],
+                datasets: [
+                    { label: 'Solari', data: [81, 87, 19, 73, 60, 93], backgroundColor: '#94a3b8' },
+                    { label: 'Ortiz', data: [75, 28, 16, 94, 85, 89], backgroundColor: '#f3c623' },
+                    { label: 'Jardine', data: [19, 6, 78, 94, 85, 89], backgroundColor: '#2563eb' },
+                    { label: 'Almada', data: [82, 30, 39, 87, 83, 26], backgroundColor: '#10b981' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 10 } } } },
+                scales: {
+                    x: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' }, max: 100 }
+                }
+            }
+        });
+
+        // Chart 2: Hallazgo 2
+        const ctx2 = document.getElementById('chartHallazgo2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['A21', 'C22', 'C22 (Ortiz)', 'A22', 'C23', 'A23 (Camp)', 'C24 (Camp)', 'A24 (Camp)', 'C25 (Fin)', 'A25', 'C26', 'A26 (Almada)'],
+                datasets: [
+                    { label: 'Presión Arriba (Percentil)', data: [80, 85, 85, 78, 64, 9, 5, 9, 69, 34, 19, 82], borderColor: '#f3c623', tension: 0.2 },
+                    { label: 'Bloque Corto / Líneas Juntas', data: [82, 20, 60, 60, 70, 98, 96, 95, 96, 72, 65, 0], borderColor: '#2563eb', tension: 0.2 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#cbd5e1', font: { size: 10 } } } },
+                scales: {
+                    x: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' }, max: 100 }
+                }
+            }
+        });
+
+        // Chart 3: Hallazgo 3
+        const ctx3 = document.getElementById('chartHallazgo3').getContext('2d');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['A23', 'C24', 'A24', 'C25', 'A25', 'C26'],
+                datasets: [{
+                    label: 'Dif. Pts Reales vs Merecidos en Liguilla',
+                    data: [-1.0, 1.4, 4.4, -2.1, -0.3, -3.4],
+                    backgroundColor: [ '#ef4444', '#10b981', '#10b981', '#ef4444', '#ef4444', '#ef4444' ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+
+        // Simulator Interactive Logic
+        const inputBloque = document.getElementById('inputBloque');
+        const inputZona = document.getElementById('inputZona');
+        const inputContra = document.getElementById('inputContra');
+
+        const valBloque = document.getElementById('valBloque');
+        const valZona = document.getElementById('valZona');
+        const valContra = document.getElementById('valContra');
+
+        const resXGA = document.getElementById('resXGA');
+        const resXPts = document.getElementById('resXPts');
+        const simFeedback = document.getElementById('simFeedback');
+
+        function updateSimulation() {
+            const bloque = parseFloat(inputBloque.value);
+            const zona = parseFloat(inputZona.value);
+            const contra = parseFloat(inputContra.value);
+
+            valBloque.innerText = bloque.toFixed(1) + ' yd';
+            valZona.innerText = zona + '%';
+            valContra.innerText = contra.toFixed(1);
+
+            // Model simulation formula based on analysis parameters
+            let basexGA = 1.32;
+            basexGA -= (29.2 - bloque) * 0.05;
+            basexGA -= (26 - zona) * 0.03;
+            basexGA -= (contra - 2.4) * 0.08;
+
+            basexGA = Math.max(0.75, Math.min(1.60, basexGA));
+
+            let projectedXPts = 2.30 - (basexGA * 0.45);
+            projectedXPts = Math.max(1.20, Math.min(2.25, projectedXPts));
+
+            resXGA.innerText = basexGA.toFixed(2) + ' xGA';
+            resXPts.innerText = projectedXPts.toFixed(2) + ' Pts/P';
+
+            if (basexGA <= 0.95) {
+                resXGA.className = 'text-2xl font-bold text-america-green';
+                simFeedback.className = 'p-3 rounded-lg bg-america-green/10 border border-america-green/30 text-xs text-america-green';
+                simFeedback.innerText = 'Excelente: El equipo recupera la solidez de Jardine manteniendo la presión alta.';
+            } else if (basexGA <= 1.15) {
+                resXGA.className = 'text-2xl font-bold text-america-gold';
+                simFeedback.className = 'p-3 rounded-lg bg-america-gold/10 border border-america-gold/30 text-xs text-america-gold';
+                simFeedback.innerText = 'Aceptable: Parámetros dentro de la media alta de solidez en Liga MX.';
+            } else {
+                resXGA.className = 'text-2xl font-bold text-red-400';
+                simFeedback.className = 'p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-xs text-red-300';
+                simFeedback.innerText = 'Riesgo: El bloque sigue desproporcionado y vulnerable en zona central.';
+            }
+        }
+
+        inputBloque.addEventListener('input', updateSimulation);
+        inputZona.addEventListener('input', updateSimulation);
+        inputContra.addEventListener('input', updateSimulation);
+    </script>
+</body>
+</html>
